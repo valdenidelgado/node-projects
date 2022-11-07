@@ -1,0 +1,40 @@
+{
+  "name": "puf-api",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Valdeni Delgado",
+    "email": "valdenidelgadofilho@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "fix": "run-s \"fix:* {@}\" --",
+    "fix:lint": "eslint --fix --no-error-on-unmatched-pattern",
+    "fix:format": "prettier --write",
+    "format": "yarn fix:format 'src/**/*.{js|ts|md|json}'",
+    "lint": "yarn fix:lint src/**/*.{js,ts,md,json}"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "./src/**/*.{js,md,json}": [
+      "yarn fix"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1"
+  }
+}
