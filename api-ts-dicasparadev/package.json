@@ -1,0 +1,32 @@
+{
+  "name": "api-ts-dicasparadev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon --watch 'src/' --exec 'ts-node src/index.ts' -e ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.15",
+    "@types/validator": "^13.7.10",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.12.1",
+    "validator": "^13.7.0"
+  }
+}

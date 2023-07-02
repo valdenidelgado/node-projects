@@ -1,0 +1,38 @@
+{
+  "name": "back-restapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
+    "lint": "eslint src --ext .ts --fix",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^1.2.0",
+    "@types/node": "^18.15.11",
+    "@types/supertest": "^2.0.12",
+    "eslint": "^8.37.0",
+    "sqlite3": "^5.1.6",
+    "supertest": "^6.3.3",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.8"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^8.3.0",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "pg": "^8.10.0",
+    "zod": "^3.21.4"
+  }
+}
