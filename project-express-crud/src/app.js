@@ -2,6 +2,8 @@ const express = require('express');
 const routerHome = require('./routes/home');
 const routerUser = require('./routes/userRoute');
 const routerToken = require('./routes/tokenRoute');
+const routerAluno = require('./routes/alunoRoute');
+const routerFoto = require('./routes/fotoRoute');
 const db = require('./db/conn');
 
 class App {
@@ -20,7 +22,9 @@ class App {
   routes() {
     this.app.use('/', routerHome);
     this.app.use('/users/', routerUser);
+    this.app.use('/alunos/', routerAluno);
     this.app.use('/tokens/', routerToken);
+    this.app.use('/fotos/', routerFoto);
   }
 
   sqlite() {
