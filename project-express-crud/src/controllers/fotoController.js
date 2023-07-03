@@ -1,28 +1,28 @@
 const aluno = require('../models/Aluno');
+const Foto = require('../models/Foto');
 const upload = require('../config/multerConfig').single('foto');
 
 class FotoController {
-  async store(req, res) {
+  store(req, res) {
     return upload(req, res, async (error) => {
       if (error) {
         return res.status(400).json({ error: error.code });
       }
 
       try {
-        const { originalname: name, filename: path } = req.file;
+        const { originalname, filename } = req.file;
         const { aluno_id } = req.body;
 
-        const alunoEncontrado = await aluno.findByPk(aluno_id);
-
-        if (!alunoEncontrado) {
-          return res.status(404).json({ error: 'Aluno não encontrado' });
+        if (!aluno_id) {
+          return res.status(400).json({ error: 'Aluno não informado' });
         }
-
-        const foto = await alunoEncontrado.createFoto({ name, path });
+        const foto = await Foto.create({ originalname, filename, aluno_id });
 
         return res.status(200).json(foto);
-      } catch (error) {
-        return res.status(400).json(error);
+      } catch (err) {
+        return res.status(400).json({
+          error: err.message,
+        });
       }
     });
   }

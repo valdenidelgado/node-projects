@@ -1,4 +1,5 @@
 const express = require('express');
+const { resolve } = require('path');
 const routerHome = require('./routes/home');
 const routerUser = require('./routes/userRoute');
 const routerToken = require('./routes/tokenRoute');
@@ -17,6 +18,7 @@ class App {
   middlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.static(resolve(__dirname, '..', 'uploads')));
   }
 
   routes() {

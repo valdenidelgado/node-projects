@@ -1,4 +1,5 @@
 const aluno = require('../models/Aluno');
+const Foto = require('../models/Foto');
 
 class AlunoController {
   async store(req, res) {
@@ -19,7 +20,14 @@ class AlunoController {
 
   async index(req, res) {
     try {
-      const alunos = await aluno.findAll();
+      const alunos = await aluno.findAll({
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
+        order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+        include: {
+          model: Foto,
+          attributes: ['url', 'filename'],
+        },
+      });
 
       return res.status(200).json(alunos);
     } catch (error) {
@@ -35,7 +43,14 @@ class AlunoController {
         return res.status(400).json({ error: 'ID não enviado' });
       }
 
-      const alunoEncontrado = await aluno.findByPk(id);
+      const alunoEncontrado = await aluno.findByPk(id, {
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
+        order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+        include: {
+          model: Foto,
+          attributes: ['url', 'filename'],
+        },
+      });
 
       if (!alunoEncontrado) {
         return res.status(404).json({ error: 'Aluno não encontrado' });
